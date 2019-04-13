@@ -3,7 +3,7 @@
     <ul>
       <li class="logo"><router-link to="/">EZ INTERIORS</router-link></li>
       <li class="select"><router-link to="/interiory">Interiory</router-link></li>
-      <li class="select"><router-link to="kontakt/">Kontakt</router-link></li>
+      <li class="select"><router-link to="/kontakt">Kontakt</router-link></li>
     </ul>
   </div>
 </template>
