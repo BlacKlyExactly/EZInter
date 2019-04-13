@@ -2,7 +2,7 @@
   <div class="nav">
     <ul>
       <li class="logo"><router-link to="/">EZ INTERIORS</router-link></li>
-      <li class="select"><router-link to="/">Interiory</router-link></li>
+      <li class="select"><router-link to="/interiory">Interiory</router-link></li>
       <li class="select"><router-link to="/">Kontakt</router-link></li>
     </ul>
   </div>
@@ -25,6 +25,14 @@ export default {
         nav.style.boxShadow = '0vw 0vw 2vw .2vw gray';
       }
     });
+  },
+  methods: {
+
+  },
+  data(){
+    return {
+
+    };
   },
 };
 </script>

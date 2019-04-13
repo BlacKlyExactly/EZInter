@@ -41,6 +41,7 @@
               interior <input type="text" name="interior" placeholder="Nazwa interioru"/>
               opis <input type="text" name="opis" placeholder="Opis interioru"/>
               link do zdjęcia<input type="text" name="zdjęcie" placeholder="Link do zdjęcia"/>
+              link do interioru<input type="text" name="link" placeholder="Link do interioru"/>
               wiadomość<textarea name="wiadomosc" placeholder="Coś od siebie"></textarea>
               <button type="submit">Wyślij</button>
             </form>
@@ -100,23 +101,24 @@ export default {
         },
       })
         .then((response) =>{
+          const lenght = response.data.data.interiorses.length - 1;
           this.post = {
-            name: response.data.data.interiorses[0].name,
-            img: response.data.data.interiorses[0].image,
-            description: response.data.data.interiorses[0].description,
+            name: response.data.data.interiorses[lenght].name,
+            img: response.data.data.interiorses[lenght].image,
+            description: response.data.data.interiorses[lenght].description,
             author: response.data.data.interiorses[0].author.nickname,
           };
           this.post2 = {
-            name: response.data.data.interiorses[1].name,
-            img: response.data.data.interiorses[1].image,
-            description: response.data.data.interiorses[1].description,
-            author: response.data.data.interiorses[1].author.nickname,
+            name: response.data.data.interiorses[lenght - 1].name,
+            img: response.data.data.interiorses[lenght - 1].image,
+            description: response.data.data.interiorses[lenght - 1].description,
+            author: response.data.data.interiorses[lenght - 1].author.nickname,
           };
           this.post3 = {
-            name: response.data.data.interiorses[2].name,
-            img: response.data.data.interiorses[2].image,
-            description: response.data.data.interiorses[2].description,
-            author: response.data.data.interiorses[1].author.nickname,
+            name: response.data.data.interiorses[lenght - 2].name,
+            img: response.data.data.interiorses[lenght - 2].image,
+            description: response.data.data.interiorses[lenght - 2].description,
+            author: response.data.data.interiorses[lenght - 2].author.nickname,
           };
         });
     },
@@ -155,8 +157,10 @@ export default {
     height: 50vw;
     width: 98vw;
     img{
-      width:52vw;
+      width:45vw;
+      height: 45vw;
       margin-right:4vw;
+      box-shadow:0vw 0vw 5vw .3vw gray ;
     }
   }
 }
@@ -168,19 +172,21 @@ margin-right: auto;
   z-index: 10;
   text-align: center;
   font-size: 4vw;
+  left:4.5vw;
+  height: 5vw;
 }
 .interiorDescription{
   position: relative;
   margin-right:7vw;
-  font-size: 1.5vw;
-  width:30vw;
+  font-size: 1.6vw;
+  width:35vw;
   text-align: center;
   align-self: flex-start;
   margin-top:15vw;
 }
 .author{
   font-size: 2vw;
-  margin-top:.5vw;
+  margin-top:1vw;
 }
 .question{
   position: relative;
@@ -204,6 +210,9 @@ margin-right: auto;
 .send{
 height: 80vw;
 margin-top:10vw;
+  .title{
+    margin-bottom:5vw;
+  }
 }
 form{
   display: flex;
@@ -232,8 +241,10 @@ input[type="text"]{
 button{
 width:20vw;
 height: 5vw;
+background: transparent;
 border:.1vw solid black;
 font-size:1.5vw;
+  margin-bottom: 5vw;
 font-weight: bold;
 margin-top: 5vw;
   transition:0.2s;
